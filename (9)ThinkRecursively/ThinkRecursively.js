@@ -12,16 +12,19 @@ const passMeAnObject = {
         },
         bSetting2: "bString"
     },
-    cProperty: {
-        cSetting: "cString"
-    }
+    cProperty: ["array", "for", "change"]
 }
 
 
 let answer = {}
 function printFlattenedKey(obj, keyHitherto){
     for (key in obj) {
-        (typeof(obj[key]) === "object") ?
+        (typeof(obj[key]) === "object" && Object.prototype.toString.call(obj) == '[object Array]') ?
+        /* 
+        Extended gyan - other ways of checking if object is an array:
+        (1) obj instanceof Array;
+        (2) Array.isArray(obj); 
+        */
         printFlattenedKey(obj[key], keyHitherto+"."+key) : 
         ( answer[keyHitherto+"."+key] = obj[key] )
     }
