@@ -12,7 +12,7 @@ printMyName("Some intermediate location", "Canada")
 
 Function.prototype.mybind = function(...args){
     // this points to printName method
-    let obj = this,
+    let obj = this, //also, we can't use this directly inside the below fn because the context changes
     params = args.slice(1)
 
     return function(...args2){
